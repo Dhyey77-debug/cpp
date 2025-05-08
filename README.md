@@ -15,4 +15,6 @@
 ![prac3 4(2)](https://github.com/user-attachments/assets/e039e86f-d185-49ea-b722-13a2e2687196)
 ![prac3 5](https://github.com/user-attachments/assets/cb766f32-5960-40de-be71-96b0b9e3e8bc)
 ![Screenshot 2025-05-08 233314](https://github.com/user-attachments/assets/c903c281-20ab-42a9-b69d-90765b779df3)
+![Screenshot 2025-05-08 234909](https://github.com/user-attachments/assets/35f0f02d-c9eb-4a9b-8114-6b9cfc233db1)
+
 
