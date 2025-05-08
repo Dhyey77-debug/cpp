@@ -1,0 +1,62 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+using namespace std;
+
+class Shape {
+protected:
+    double radius;
+
+public:
+    Shape(double r = 0.0) : radius(r) {}
+
+    void setRadius(double r) {
+        radius = r;
+    }
+
+    double getRadius() const {
+        return radius;
+    }
+};
+
+class Circle : public Shape {
+public:
+    Circle(double r = 0.0) : Shape(r) {}
+
+    double area() const {
+        return M_PI * radius * radius;
+    }
+};
+
+void dynamicApproach() {
+    std::vector<Circle> circles;
+    circles.emplace_back(3.0);
+    circles.emplace_back(4.5);
+    circles.emplace_back(2.2);
+
+    for (const auto& circle : circles) {
+        std::cout << "Area: " << circle.area() << std::endl;
+    }
+}
+
+void staticApproach() {
+    const int SIZE = 3;
+    Circle circles[SIZE] = {Circle(5.0), Circle(2.0), Circle(6.3)};
+
+    for (int i = 0; i < SIZE; ++i) {
+        std::cout << "Area: " << circles[i].area() << std::endl;
+    }
+}
+
+int main() {
+    std::cout << "Dynamic Approach:" << std::endl;
+    dynamicApproach();
+
+    std::cout << "\nStatic Approach:" << std::endl;
+    staticApproach();
+
+    cout<<endl<<"24CE113"<<"Dhyey shah"<<endl;
+
+
+    return 0;
+}
