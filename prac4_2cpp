@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+#include <unordered_map>
+#include <memory>
+using namespace std;
+
+class Person {
+protected:
+    string name;
+    int age;
+public:
+    Person(string n, int a) : name(n), age(a) {}
+    virtual void displayPerson() {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+
+class Employee : public Person {
+protected:
+    int employeeID;
+public:
+    Employee(string n, int a, int id) : Person(n, a), employeeID(id) {}
+    virtual void displayEmployee() {
+        displayPerson();
+        cout << "Employee ID: " << employeeID << endl;
+    }
+};
+
+class Manager : public Employee {
+    string department;
+public:
+    Manager(string n, int a, int id, string dept)
+        : Employee(n, a, id), department(dept) {}
+    void displayManager() {
+        displayEmployee();
+        cout << "Department: " << department << endl;
+    }
+};
+
+int main() {
+    shared_ptr<Manager> m1 = make_shared<Manager>("Alice", 35, 101, "Finance");
+    shared_ptr<Manager> m2 = make_shared<Manager>("Bob", 42, 102, "IT");
+
+    unordered_map<int, shared_ptr<Manager>> managerDirectory;
+    managerDirectory[101] = m1;
+    managerDirectory[102] = m2;
+
+    for (auto& entry : managerDirectory) {
+        cout << "Manager with ID " << entry.first << ":\n";
+        entry.second->displayManager();
+        cout << endl;
+    }
+    
+    cout<<endl<<"24CE113"<<endl<<"Dhyey shah";
+
+    return 0;
+}
