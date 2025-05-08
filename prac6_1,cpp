@@ -1,0 +1,72 @@
+
+#include <iostream>
+using namespace std;
+
+class DynamicArray {
+    int* Data;
+    int Size;
+    int Capacity;
+
+    void Resize() {
+        cout << "Resizing The Array ....." << endl;
+        Capacity *= 2;
+        int* NewData = new int[Capacity];
+        for (int i = 0; i < Size; i++) {
+            NewData[i] = Data[i];
+        }
+        delete[] Data;
+        Data = NewData;
+    }
+
+public:
+    DynamicArray(int C = 4) {
+        Size = 0;
+        Capacity = C;
+        Data = new int[Capacity];
+    }
+
+    ~DynamicArray() {
+        delete[] Data;
+    }
+
+    void insert(int value) {
+        if (Size == Capacity) {
+            Resize();
+        }
+        Data[Size++] = value;
+    }
+
+    void remove(int index) {
+        if (index < 0 || index >= Size) {
+            cout << "Invalid Index" << endl;
+            return;
+        }
+        for (int i = index; i < Size - 1; i++) {
+            Data[i] = Data[i + 1];
+        }
+        Size--;
+    }
+
+    void Display() const {
+        for (int i = 0; i < Size; i++) {
+            cout << Data[i] << endl;
+        }
+    }
+};
+
+int main() {
+    DynamicArray arr;
+    arr.insert(10);
+    arr.insert(20);
+    arr.insert(30);
+    arr.insert(40);
+    arr.insert(50);
+    arr.Display();
+
+    cout << "After removing index 2:" << endl;
+    arr.remove(2); // Removes 30
+    arr.Display();
+
+    cout<<endl<<endl<<"24CE113-Dhyey shah"<<endl;
+    return 0;
+}
